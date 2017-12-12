@@ -18,7 +18,8 @@ angular.module('demo').controller('MainCtrl', function ($scope, $http, S3UploadS
                     console.log("result", result)
                     // Mark as success
                     file.Success = true;
-                    $scope.product.image = "https://abdullahtest.s3.amazonaws.com/" + file.name;
+                    /*$scope.product.image = "https://gajajewellery.s3.amazonaws.com/" + file.name;*/
+				 $scope.product.image = "https://a4azad.s3.amazonaws.com/" + file.name;
                 }, function (error) {
                     // Mark the error
                     $scope.Error = error;

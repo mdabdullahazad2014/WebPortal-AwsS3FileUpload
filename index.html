@@ -1,63 +1,66 @@
 <html>
 
 <head>
-    <title>Demo</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<title>Demo</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
-<script src="/AwsImageUpload/lib/jquery-1.11.3.min.js"></script>
-<script src="/AwsImageUpload/lib/bootstrap.min.js"></script>
 
-<script src="/AwsImageUpload/lib/angular.min.js"></script>
-<script src="/AwsImageUpload/lib/aws-sdk.min.js"></script>
-<script src="/AwsImageUpload/lib/ng-file-upload.js"></script>
-
-<!--app js-->
-<script src="/AwsImageUpload/scripts/app.js"></script>
-<!--services-->
-<script src="/AwsImageUpload/scripts/services/amazon-upload-service.js"></script>
-<!-- Controllers -->
-<script src="/AwsImageUpload/scripts/controllers/main.js"></script>
 
 <body ng-app="demo" ng-controller="MainCtrl">
-    <div class="container">
-        <h1>Welcome Home</h1>
-        <form>
-            <label>Name:</label>
-            <input type="text" ng-model="product.name">
-            <div>
-                <h1>Upload Files</h1>
-                <p>We strongly recommend 7-zip for zipping/extracting files</p>
-                <p><input type="file" ng-model="product.name">
-                    <button type="file" ngf-select="uploadFiles($files)" ngf-multiple="true">Select File</button>
-                </p>
-            </div>
-            <div ng-show="Files.length > 0">
-                <div ng-repeat="file in Files">
-                    File:
-                    <div>
-                        {{file.name}} {{file.$error}} {{file.$errorParam}}
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{file.Progress}}%;">
-                            {{file.Progress | number:0}}%
-                        </div>
-                    </div>
-                    <div class="alert alert-info" role="alert" ng-show="file.Progress == 100 && !file.Success">Processing, please wait...</div>
-                    <div class="alert alert-success" role="alert" ng-show="file.Success">Upload Complete!</div>
-                </div>
-                <div class="alert alert-danger" role="alert" ng-show="errorMsg.length > 0">
-                    Oooops we had trouble uploading the file. Please refresh the page and try again.
-                    <p>If the problem persits please supply us with the following details</p>
-                    <p>{{errorMsg}}</p>
-                </div>
-                <div>{{Error}}</div>
-            </div>
-            <button type="submit" ng-click="save(product)">Save</button>
-        </form>
-        <!--<ul>
+	<div class="container">
+		<h1>Welcome Home</h1>
+		<form>
+			<label>Name:</label>
+			<input type="text" ng-model="product.name">
+			<div>
+				<h1>Upload Files</h1>
+				<p>We strongly recommend 7-zip for zipping/extracting files</p>
+				<p><input type="file" ng-model="product.name" style="visibility:hidden;">
+					<button type="file" ngf-select="uploadFiles($files)" ngf-multiple="true">Select File</button>
+				</p>
+			</div>
+			<div ng-show="Files.length > 0">
+				<div ng-repeat="file in Files">
+					File:
+					<div>
+						{{file.name}} {{file.$error}} {{file.$errorParam}}
+					</div>
+					<div class="progress">
+						<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{file.Progress}}%;">
+							{{file.Progress | number:0}}%
+						</div>
+					</div>
+					<div class="alert alert-info" role="alert" ng-show="file.Progress == 100 && !file.Success">Processing, please wait...</div>
+					<div class="alert alert-success" role="alert" ng-show="file.Success">Upload Complete!</div>
+				</div>
+				<div class="alert alert-danger" role="alert" ng-show="errorMsg.length > 0">
+					Oooops we had trouble uploading the file. Please refresh the page and try again.
+					<p>If the problem persits please supply us with the following details</p>
+					<p>{{errorMsg}}</p>
+				</div>
+				<div>{{Error}}</div>
+			</div>
+			<button type="submit" ng-click="save(product)">Save</button>
+		</form>
+		<!--<ul>
             <li ng-repeat="list in nameList">{{list.name}}<img src="{{list.image}}" style="width:100px;height:50px;" /></li>
         </ul>-->
-    </div>
+	</div>
+
+	
+
+	<script src="lib/angular.min.js"></script>
+	<script src="lib/jquery-1.11.3.min.js"></script>
+	<script src="lib/bootstrap.min.js"></script>
+	<script src="lib/aws-sdk.min.js"></script>
+	<script src="lib/ng-file-upload.js"></script>
+
+	<!--app js-->
+	<script src="scripts/app.js"></script>
+	<!--services-->
+	<script src="scripts/services/amazon-upload-service.js"></script>
+	<!-- Controllers -->
+	<script src="scripts/controllers/main.js"></script>
 </body>
 
 </html>
